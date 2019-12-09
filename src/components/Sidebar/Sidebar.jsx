@@ -1,14 +1,18 @@
 import React from 'react';
-import s from './Navbar.module.css';
+import s from './Sidebar.module.css';
 import {NavLink} from "react-router-dom";
 
 
-const sidebar = (props) => {
-    let urlPath = '/dialogs/' + props.navState.PicName;
-    let PicPath = '../redux/img'+props.navState.PicName;
-    let navProfileName = props.navState.Name.map
-    ( p => <NavLink to={urlPath}><img src={PicPath} /> {props.navState.Name}</NavLink>)
-debugger;
+const Sidebar = (props) => {
+    let url = "/dialogs/"
+    let navProfileItem = props.sidebar.map(p =>
+        <div className='123' key={p.id}>
+            <NavLink
+                to='/'
+                className={s.friends}>
+                {p.name}
+            </NavLink>
+        </div>)
     return (
         <nav className={s.nav}>
             <div className={s.item}>
@@ -26,11 +30,11 @@ debugger;
             <div>
                 <h3>My friends</h3>
                 <div className={s.friends}>
-                    {navProfileName}
+                    {navProfileItem}
                 </div>
             </div>
         </nav>
     )
 }
 
-export default sidebar;
+export default Sidebar;

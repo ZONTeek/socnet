@@ -26,8 +26,9 @@
 }
 
 .friends {
-text-align: left;
-    padding-left: 20px;
+    text-decoration: none;
+    margin-bottom: 10px;
+
 }
 .friends img {
     border-radius: 50%;

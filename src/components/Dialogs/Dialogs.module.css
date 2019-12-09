@@ -1,8 +1,23 @@
-.header img {
-    width: 45px;
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
 }
 
-.header {
-    grid-area: header;
-    background-color: rgb(108, 111, 119);
+.dialogsItems {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.dialogsItems .active {
+    color: gold;
+}
+
+.massages {
+    padding-top: 20px;
+    width: 400px;
+
+}
+
+.newMassage {
+    text-align: right;
 }

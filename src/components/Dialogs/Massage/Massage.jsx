@@ -1,15 +1,11 @@
 import React from 'react';
-import s from '../Dialogs.module.css'
-import {NavLink} from "react-router-dom";
+/*import s from '../Dialogs.module.css'*/
 
+const Massage = (props) => {
 
-const DialogLink = (props) => {
-    let path = '/dialogs/' + props.id;
     return (
-        <div className={s.dialog + ' ' + s.active}>
-            <NavLink to={path}>{props.name}</NavLink>
-        </div>
+            <div className={props.owner}> {props.massage} </div>
     )
-}
+};
 
-export default DialogLink
+export default Massage

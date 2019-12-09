@@ -1,20 +1,10 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+let stateInit = [
+    {id: 1, name: "Platon Boyko", PicPath: '1.jpg'},
+    {id: 2, name: "Etot Debil", PicName: '2.jpg'},
+    {id: 3, name: "Tot Samiy", PicName: '3.jpg'},
+]
+const sidebarReducer = (state = stateInit, action) => {
+    return state;
+};
 
-const profileReducer = (state, action) => {
-    switch (action.type) {
-        case ADD_POST:
-            let newPost = {
-                id: 4,
-                post: state.newPostContent,
-                likes: 0,
-            };
-            state.postData.push(newPost);
-            state.newPostContent = '';
-            return state;
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostContent = action.newText;
-        default: return state;
-    }
-}
-export default profileReducer;
+export default sidebarReducer;

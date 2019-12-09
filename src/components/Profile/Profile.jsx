@@ -1,18 +1,17 @@
 import React from 'react';
-import pic from './profilebackpic.png';
-import s from './Profile.module.css'
-import MyPosts from './MyPosts/MyPosts'
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = () => {
-  return (
-    <div className={s.content}>
-      <div>
-        <img src={pic} />
-        ava+descr
+
+const Profile = (props) => {
+    //store={props.store}
+    return (
+        <div>
+            <ProfileInfo/>
+            <MyPostsContainer/>
         </div>
-      <MyPosts />
-    </div>
-  )
+    )
 }
 
-export default Profile;
+export {Profile};
+
