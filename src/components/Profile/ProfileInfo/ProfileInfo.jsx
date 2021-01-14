@@ -5,7 +5,7 @@ const ProfileInfo = () => {
 
     return (
         <div>
-            <img src={pic}/>
+            <img alt="profile avatar" src={pic} />
             ava+descr
         </div>
     )

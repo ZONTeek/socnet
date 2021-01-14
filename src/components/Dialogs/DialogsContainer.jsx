@@ -1,6 +1,6 @@
-import {addMassageActionCreator, updateNewMsgTextActionCreator} from "../../redux/dialogs-reducer";
+import { addMassageActionCreator, updateNewMsgTextActionCreator } from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 /*const DialogsContainer = () => {
 
@@ -25,11 +25,8 @@ import {connect} from "react-redux";
     )
 }*/
 
-let mapStateToProps = (state) => {
-    return {
-        state: state.dialogsPage
-    }
-};
+let mapStateToProps = (state) => ({ state: state.dialogsPage });
+
 let mapDispatchToProps = (dispatch) => {
     return {
         addMassage: () => {
@@ -40,6 +37,6 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 };
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs);
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

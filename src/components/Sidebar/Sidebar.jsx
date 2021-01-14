@@ -1,10 +1,9 @@
 import React from 'react';
 import s from './Sidebar.module.css';
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const Sidebar = (props) => {
-    let url = "/dialogs/"
     let navProfileItem = props.sidebar.map(p =>
         <div className='123' key={p.id}>
             <NavLink
@@ -26,6 +25,9 @@ const Sidebar = (props) => {
             </div>
             <div className={s.item}>
                 <NavLink to='/Audio' activeClassName={s.active}>Audio </NavLink>
+            </div>
+            <div className={s.item}>
+                <NavLink to='/Users' activeClassName={s.active}>Users </NavLink>
             </div>
             <div>
                 <h3>My friends</h3>
