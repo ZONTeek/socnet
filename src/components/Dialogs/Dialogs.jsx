@@ -1,38 +1,38 @@
 import React from 'react';
 import s from './Dialogs.module.css'
 import DialogLink from "./DialogLink/DialogLink";
-import Massage from "./Massage/Massage";
+import Message from "./Message/Message";
 import './Dialogs.css';
 
 const Dialogs = (props) => {
-    let dialogElement = props.state.dialogsData.map (d =>
-        <DialogLink id={d.id} key={d.id} name={d.name}/>);
+    let dialogElement = props.state.dialogsData.map(d =>
+        <DialogLink id={d.id} key={d.id} name={d.name} />);
 
-    let massagesElement = props.state.massagesData.map (m =>
-        <Massage owner={m.owner} key={m.id} massage={m.massage}/>);
+    let messagesElement = props.state.messagesData.map(m =>
+        <Message owner={m.owner} key={m.id} message={m.message} />);
 
 
-    let addMassage = () => {
-        props.addMassage();
+    let addMessage = () => {
+        props.addMessage();
     };
     let onMsgChange = (e) => {
         let text = e.target.value;
-        props.updateMsgText(text);
+        props.updateNewMsgText(text);
     };
 
     return (
-            <div className={s.dialogs}>
+        <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {dialogElement}
             </div>
-            <div className={s.massages}>
-                {massagesElement}
-                <div className={s.newMassage}>
+            <div className={s.messages}>
+                {messagesElement}
+                <div className={s.newMessage}>
                     <textarea onChange={onMsgChange}
-                              placeholder={'New massage'}
-                              value={props.state.newMsgContent} />
+                        placeholder={'New message'}
+                        value={props.state.newMsgContent} />
                     <div>
-                        <button onClick={addMassage}>></button>
+                        <button onClick={addMessage}>></button>
                     </div>
                 </div>
             </div>

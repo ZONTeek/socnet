@@ -27,3 +27,11 @@
 button {
     width: 80px;
 }
+
+.pages {
+    text-align: center;
+}
+
+.activePage {
+    font-weight: bold;
+}

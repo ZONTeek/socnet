@@ -12,12 +12,11 @@
     color: gold;
 }
 
-.massages {
+.messages {
     padding-top: 20px;
     width: 400px;
-
 }
 
-.newMassage {
+.newMessage {
     text-align: right;
 }

@@ -18,15 +18,15 @@ const MyPosts = (props) => {
     }
     return (
         <div className={s.postsBlock}>
-            <div>
-                <textarea onChange={onPostChange}
-                    value={props.state.newPostContent} />
-            </div>
-            <div>
-                <button onClick={addPost}>Add post</button>
-            </div>
+            <form>
+                <input onChange={onPostChange}
+                    value={props.state.newPostContent}
+                    onSubmit={(e) => { e.preventDefault(); addPost() }}
+                />
+                <button onClick={(e) => { e.preventDefault(); addPost() }} type="submit">Add post</button>
+            </form>
             <div className={s.MyPosts}>
-                <h3>My posts: </h3>
+                <h3>Posts: </h3>
                 {postElements}
             </div>
         </div>

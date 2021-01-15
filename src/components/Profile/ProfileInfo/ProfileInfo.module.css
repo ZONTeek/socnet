@@ -1,0 +1,15 @@
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.userAva {
+    padding: 40px;
+    padding-top: 15px;
+    padding-left: 10%;
+    width: 300px;
+}
+
+.description {
+    padding-left: 50px;
+}
