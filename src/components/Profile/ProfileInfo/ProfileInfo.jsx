@@ -8,7 +8,6 @@ const showPhoto = (photo) => {
 }
 
 const ProfileInfo = ({ profile }) => {
-    console.log(profile);
     return (<>
         <img alt="background avatar" src={pic} />
         <div className={s.profile}>

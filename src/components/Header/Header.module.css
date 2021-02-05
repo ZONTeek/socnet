@@ -1,6 +1,7 @@
 .header img {
     width: 45px;
     padding-left: 20px;
+    float: left;
 }
 
 .header {
@@ -10,5 +11,12 @@
     border-bottom-right-radius: 15px;
     display: block;
     height: 60px;
-    margin-bottom: 10px ;
+    margin-bottom: 10px;
+}
+
+.authInfo {
+    text-align: right;
+    vertical-align: center;
+    padding-top: 20px;
+    padding-right: 30px;
 }

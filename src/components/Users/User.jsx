@@ -7,14 +7,14 @@ const showPhoto = (photo) => {
   return photo ? photo : default_ava;
 }
 
-const User = ({ userInfo, toggleFollow, photo, ...props }) => {
+const User = ({ userInfo, onToggleFollow, photo, ...props }) => {
   return <>
     <span className={s.user}>
       <NavLink to={'/profile/' + userInfo.id}>
         <img alt="user avatar" src={showPhoto(userInfo.photos.small)} />
       </NavLink>
       <p>{userInfo.name}</p>
-      <button onClick={() => toggleFollow(userInfo.id)}>{userInfo.followed ? "Unfollow" : "Follow"}</button>
+      <button onClick={() => onToggleFollow(userInfo.id, userInfo.followed)}>{userInfo.followed ? "Unfollow" : "Follow"}</button>
     </span>
   </>
 }

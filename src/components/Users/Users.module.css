@@ -35,3 +35,9 @@ button {
 .activePage {
     font-weight: bold;
 }
+
+.preloader {
+    width: 70px;
+    margin-left: auto;
+    margin-right: auto;
+}

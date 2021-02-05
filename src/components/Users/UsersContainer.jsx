@@ -1,18 +1,17 @@
 import React from 'react';
-import * as axios from 'axios';
 import User from './User';
 import s from './Users.module.css';
 import { connect } from 'react-redux';
 import { setUsers, setCurrentPage, toggleFollow, toggleFetching } from '../../redux/users-reducer';
 import ManyPages from '../common/manyPages';
 import Preloader from '../common/Preloader.jsx'
+import { followUser, getUsers, unfollowUser } from '../../api/api';
 
 
 class Users extends React.Component {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${this.props.state.currentPage}&count=${this.props.state.userPerPage}`)
-      .then(response => {
-        let data = response.data;
+    getUsers(this.props.state.currentPage, this.props.state.userPerPage)
+      .then(data => {
         this.props.setUsers(data.items, data.totalCount);
         this.props.toggleFetching(false);
       })
@@ -21,11 +20,25 @@ class Users extends React.Component {
     this.props.setUsers([])
     this.props.toggleFetching(true);
     this.props.setCurrentPage(page);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users/?page=${page}&count=${this.props.state.userPerPage}`)
-      .then(response => {
-        this.props.setUsers(response.data.items, response.data.totalCount);
+    getUsers(this.props.state.currentPage, this.props.state.userPerPage)
+      .then(data => {
+        this.props.setUsers(data.items, data.totalCount);
         this.props.toggleFetching(false);
       })
+  }
+  onToggleFollow = (userId, isUserFollowed) => {
+    if (!isUserFollowed) {
+      followUser(userId)
+        .then(data => {
+          data.resultCode === 0 ? this.props.toggleFollow(userId) : console.log(data.messages);
+        })
+    } else {
+      unfollowUser(userId)
+        .then(data => {
+          data.resultCode === 0 ? this.props.toggleFollow(userId) : console.log(data.messages);
+        })
+
+    }
   }
   render() {
     let pages = [];
@@ -38,7 +51,7 @@ class Users extends React.Component {
           return <User
             key={u.id}
             userInfo={u}
-            toggleFollow={this.props.toggleFollow}
+            onToggleFollow={this.onToggleFollow}
           />
         })}
       </div>

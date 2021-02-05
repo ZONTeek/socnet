@@ -32,7 +32,7 @@ const Dialogs = (props) => {
                         placeholder={'New message'}
                         value={props.state.newMsgContent} />
                     <div>
-                        <button onClick={addMessage}>></button>
+                        <button onClick={addMessage}>Send message</button>
                     </div>
                 </div>
             </div>
