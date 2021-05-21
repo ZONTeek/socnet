@@ -3,11 +3,11 @@ const UPDATE_NEW_MSG_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let stateInit = {
     messagesData: [
-        { id: 1, message: 'Privet', owner: 'left' },
-        { id: 2, message: 'Kak dela?', owner: 'left' },
-        { id: 3, message: 'Chto delaew?', owner: 'left' },
-        { id: 4, message: 'Nihuya', owner: 'right' },
-        { id: 5, message: 'A ti?', owner: 'right' },
+        { id: 1, message: "Привет", owner: 'left' },
+        { id: 2, message: "Как дела", owner: 'left' },
+        { id: 3, message: "Что делаешь?", owner: 'left' },
+        { id: 4, message: "Ничего", owner: 'right' },
+        { id: 5, message: 'А ты', owner: 'right' },
     ],
     dialogsData: [
         { id: 1, name: 'Gigaboy' },
