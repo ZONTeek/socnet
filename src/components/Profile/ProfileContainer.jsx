@@ -1,10 +1,11 @@
 import React from 'react';
 import { addPost, updateNewPostText, setUserProfile, clearProfileData } from '../../redux/profile-reducer';
-import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
+import {compose} from 'redux';
 import Profile from './Profile';
 import * as axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import withRedirect from '../Login/withRedirect';
 
 let userId;
 
@@ -22,15 +23,16 @@ class ProfileContainer extends React.Component {
         clearProfileData();
     }
     render() {
-
-        if (!this.props.authInfo.isAuth) return <Redirect to="/login" />
         return <div>
             <Profile profile={this.props.profile.UserProfile} />
         </div>
     }
 }
 
-let mapStateToProps = (state) => ({ profile: state.profilePage, authInfo: state.authInfo });
-let ProfileWithURL = withRouter(ProfileContainer);
-export default connect(mapStateToProps, { addPost, updateNewPostText, setUserProfile })(ProfileWithURL);
+let mapStateToProps = (state) => ({ profile: state.profilePage });
+
+export default compose(
+    withRedirect,withRouter,
+    connect(mapStateToProps,{addPost, updateNewPostText, setUserProfile }))
+    (ProfileContainer);
 
