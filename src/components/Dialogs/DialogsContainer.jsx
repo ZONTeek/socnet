@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 
 
-const mapStateToProps = (state) => ({ state: state.dialogsPage });
+const mapStateToProps = (state) => ({ state: state.dialogsPage, authInfo: state.authInfo });
 
 const DialogsContainer = connect(mapStateToProps, { updateNewMsgText, addMessage })(Dialogs);
 

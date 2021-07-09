@@ -4,12 +4,13 @@ let stateInit = {
   userId: null,
   login: null,
   email: null,
+  isAuth: false,
 }
 
 const authReducer = (state = stateInit, action) => {
   switch (action.type) {
     case SET_AUTH_INFO: return {
-      ...state, ...action.data,
+      ...state, ...action.data, isAuth:true,
     }
     default: return state;
   }
