@@ -1,38 +1,49 @@
-import React from 'react';
-import { addPost, updateNewPostText, setUserProfile, clearProfileData } from '../../redux/profile-reducer';
-import { connect } from 'react-redux';
-import {compose} from 'redux';
-import Profile from './Profile';
-import * as axios from 'axios';
-import { withRouter } from 'react-router-dom';
-import withRedirect from '../Login/withRedirect';
+import React from "react";
+import {
+  addPost,
+  updateNewPostText,
+  clearProfileData,
+  getProfile,
+  getStatus,
+  updateStatus
+} from "../../redux/profile-reducer";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import Profile from "./Profile";
+import { withRouter } from "react-router-dom";
+//import withRedirect from "../Login/withRedirect";
 
-let userId;
+let userId; 
 
 class ProfileContainer extends React.Component {
-
-    componentDidMount() {
-        userId = this.props.match.params.userId;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                let data = response.data;
-                this.props.setUserProfile(data);
-            })
-    }
-    componentWillUnmount() {
-        clearProfileData();
-    }
-    render() {
-        return <div>
-            <Profile profile={this.props.profile.UserProfile} />
-        </div>
-    }
+  state = { status: "", isMyPage : false };
+  componentDidMount() {
+    if(this.props.authInfo.userId===this.props.profile.UserProfile.userId) this.setState({isMyPage: true})
+    userId = this.props.match.params.userId;
+    this.props.getProfile(userId);
+    this.props.getStatus(userId);
+  }
+  componentWillUnmount() {
+    clearProfileData();
+  }
+  render() {
+    return (
+      <div>
+        <Profile 
+        profile={this.props.profile.UserProfile} 
+        status={this.props.profile.status}
+        isMyPage={this.state.isMyPage}
+        isAuth={this.props.authInfo.isAuth}
+        updateStatus={this.props.updateStatus}
+        />
+      </div>
+    );
+  }
 }
 
-let mapStateToProps = (state) => ({ profile: state.profilePage });
+let mapStateToProps = (state) => ({ profile: state.profilePage, authInfo: state.authInfo });
 
 export default compose(
-    withRedirect,withRouter,
-    connect(mapStateToProps,{addPost, updateNewPostText, setUserProfile }))
-    (ProfileContainer);
-
+  withRouter,
+  connect(mapStateToProps, { addPost, updateNewPostText, getProfile, getStatus, updateStatus })
+)(ProfileContainer);

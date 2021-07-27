@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/API";
+
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
@@ -33,5 +35,15 @@ export const setUsers = (users, totalCount) => ({ type: SET_USERS, users: users,
 export const setCurrentPage = (pageNum) => ({ type: SET_CURRENT_PAGE, page: pageNum });
 export const toggleFollow = (id) => ({ type: TOGGLE_FOLLOW, id });
 export const toggleFetching = (isFetching) => ({ type: TOGGLE_FETCHING, isFetching });
-
+//thunk creators
+export const getUsersTC = (page, userPerPage) => (dispatch) => {
+  dispatch(setUsers([]))
+  dispatch(toggleFetching(true));
+  dispatch(setCurrentPage(page));
+  usersAPI.getUsers(page, userPerPage)
+    .then(data => {
+      dispatch(setUsers(data.items, data.totalCount));
+      dispatch(toggleFetching(false));
+    })
+}
 export default usersReducer;

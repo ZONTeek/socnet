@@ -15,7 +15,7 @@ const Sidebar = (props) => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to={`/profile/${props.authInfo.userId}`} activeClassName={s.active}>Profile </NavLink>
+                <NavLink to={props.authInfo.isAuth?`/profile/${props.authInfo.userId}`:"/login"} activeClassName={s.active}>Profile </NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to="/dialogs/" activeClassName={s.active}>Messages </NavLink>

@@ -2,38 +2,27 @@ import React from 'react';
 import User from './User';
 import s from './Users.module.css';
 import { connect } from 'react-redux';
-import { setUsers, setCurrentPage, toggleFollow, toggleFetching } from '../../redux/users-reducer';
+import { setUsers, setCurrentPage, toggleFollow, toggleFetching, getUsersTC } from '../../redux/users-reducer';
 import ManyPages from '../common/manyPages';
 import Preloader from '../common/Preloader.jsx'
-import { followUser, getUsers, unfollowUser } from '../../api/api';
+import { usersAPI } from '../../api/API';
 
 
 class Users extends React.Component {
   componentDidMount() {
-    getUsers(this.props.state.currentPage, this.props.state.userPerPage)
-      .then(data => {
-        this.props.setUsers(data.items, data.totalCount);
-        this.props.toggleFetching(false);
-      })
+    this.props.getUsersTC(this.props.state.currentPage, this.props.state.userPerPage);
   }
   onPageChanged = (page) => {
-    this.props.setUsers([])
-    this.props.toggleFetching(true);
-    this.props.setCurrentPage(page);
-    getUsers(this.props.state.currentPage, this.props.state.userPerPage)
-      .then(data => {
-        this.props.setUsers(data.items, data.totalCount);
-        this.props.toggleFetching(false);
-      })
+    this.props.getUsersTC(page, this.props.state.userPerPage);
   }
   onToggleFollow = (userId, isUserFollowed) => {
     if (!isUserFollowed) {
-      followUser(userId)
+      usersAPI.followUser(userId)
         .then(data => {
           data.resultCode === 0 ? this.props.toggleFollow(userId) : console.log(data.messages);
         })
     } else {
-      unfollowUser(userId)
+      usersAPI.unfollowUser(userId)
         .then(data => {
           data.resultCode === 0 ? this.props.toggleFollow(userId) : console.log(data.messages);
         })
@@ -66,4 +55,4 @@ class Users extends React.Component {
 
 
 let mapStateToProps = (state) => ({ state: state.usersPage })
-export default connect(mapStateToProps, { setUsers, setCurrentPage, toggleFollow, toggleFetching })(Users);
+export default connect(mapStateToProps, { setUsers, setCurrentPage, toggleFollow, toggleFetching, getUsersTC })(Users);

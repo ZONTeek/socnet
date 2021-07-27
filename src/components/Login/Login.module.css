@@ -1,0 +1,8 @@
+
+.errorMessage {
+    font-size: small;
+}
+
+.formControl.error {
+    border: solid red 2px;
+}
