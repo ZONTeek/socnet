@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/socnet/static/css/main.23e85b1e.chunk.css",
+    "main.js": "/socnet/static/js/main.43e7f6b1.chunk.js",
+    "main.js.map": "/socnet/static/js/main.43e7f6b1.chunk.js.map",
+    "runtime-main.js": "/socnet/static/js/runtime-main.6e4f5371.js",
+    "runtime-main.js.map": "/socnet/static/js/runtime-main.6e4f5371.js.map",
+    "static/js/2.330e149e.chunk.js": "/socnet/static/js/2.330e149e.chunk.js",
+    "static/js/2.330e149e.chunk.js.map": "/socnet/static/js/2.330e149e.chunk.js.map",
+    "index.html": "/socnet/index.html",
+    "static/css/main.23e85b1e.chunk.css.map": "/socnet/static/css/main.23e85b1e.chunk.css.map",
+    "static/js/2.330e149e.chunk.js.LICENSE.txt": "/socnet/static/js/2.330e149e.chunk.js.LICENSE.txt",
+    "static/media/default_avatar.cc82533c.png": "/socnet/static/media/default_avatar.cc82533c.png",
+    "static/media/logo.9f832255.png": "/socnet/static/media/logo.9f832255.png",
+    "static/media/preloader.d97d268b.svg": "/socnet/static/media/preloader.d97d268b.svg",
+    "static/media/profilebackpic.1e3760b6.png": "/socnet/static/media/profilebackpic.1e3760b6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6e4f5371.js",
+    "static/js/2.330e149e.chunk.js",
+    "static/css/main.23e85b1e.chunk.css",
+    "static/js/main.43e7f6b1.chunk.js"
+  ]
+}
