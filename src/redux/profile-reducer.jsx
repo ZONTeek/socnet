@@ -66,7 +66,7 @@ const setUserProfile = (userInfo) => ({
 });
 
 //thunk action creators
-export const getProfile = (userId) => (dispatch) => {
+export const requestProfile = (userId) => (dispatch) => {
   profileAPI.getProfile(userId).then((response) => {
     let data = response;
     dispatch(setUserProfile(data));

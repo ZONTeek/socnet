@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { usersAPI } from '../../api/API';
+import { getUsersReselect,getIsFetching,getCurrentPage,getUserPerPage,getUsersTotalCount } from '../../redux/selectors/users-selector';
+import { getUsersTC, setCurrentPage, setUsers, toggleFetching, toggleFollow } from '../../redux/users-reducer';
+import ManyPages from '../common/manyPages';
+import Preloader from '../common/Preloader.jsx';
 import User from './User';
 import s from './Users.module.css';
-import { connect } from 'react-redux';
-import { setUsers, setCurrentPage, toggleFollow, toggleFetching, getUsersTC } from '../../redux/users-reducer';
-import ManyPages from '../common/manyPages';
-import Preloader from '../common/Preloader.jsx'
-import { usersAPI } from '../../api/API';
 
 
 class Users extends React.Component {
@@ -54,5 +55,12 @@ class Users extends React.Component {
 }
 
 
-let mapStateToProps = (state) => ({ state: state.usersPage })
+let mapStateToProps = (state) => ({ 
+  state: state.usersPage, 
+  isFetching: getIsFetching(state),
+  users: getUsersReselect(state),
+  usersTotalCount: getUsersTotalCount(state),
+  currentPage: getCurrentPage(state), 
+  userPerPage: getUserPerPage(state) 
+})
 export default connect(mapStateToProps, { setUsers, setCurrentPage, toggleFollow, toggleFetching, getUsersTC })(Users);

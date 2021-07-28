@@ -7,7 +7,7 @@ class ProfileStatus extends React.Component {
     status: "Что нового?",
   };
   componentDidMount() {
-    if (this.props.status.trim()!=="") this.setState({ status: this.props.status });
+    if (this.props.status && this.props.status.trim()!=="") this.setState({ status: this.props.status });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.status !== this.props.status) {
